@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dreamer - Level one</title>
+
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component/dist/aframe-proxy-event-component.min.js"></script>
+    <script defer src="toleveltwo.js"></script>
+  </head>
+
+  <body>
+    <a-scene toleveltwo inspector-plugin-recast>
+      <!--Assets-->
+      <a-assets>
+        <a-asset-item
+          id="my-nav-mesh"
+          src="https://cdn.glitch.com/2f2d1388-d3f8-4a7c-91cb-e78da3dfcb24%2Flevel-one-test.gltf?v=1621962433518"
+        ></a-asset-item>
+
+        <img
+          id="sky"
+          src="https://cdn.glitch.com/2f2d1388-d3f8-4a7c-91cb-e78da3dfcb24%2Fsky.jpg?v=1622123993714"
+        />
+        <img
+          id="text"
+          src="https://cdn.glitch.com/2f2d1388-d3f8-4a7c-91cb-e78da3dfcb24%2Ftext.png?v=1623052055660"
+        />
+        <a-asset
+          id="level-one-nav"
+          src="https://cdn.glitch.com/2f2d1388-d3f8-4a7c-91cb-e78da3dfcb24%2Ffirst-level-mesh.gltf?v=1622793476980"
+        ></a-asset>
+          <a-asset
+          id="swirl"
+          src="https://cdn.glitch.com/2f2d1388-d3f8-4a7c-91cb-e78da3dfcb24%2Fswirl.glb?v=1622546844929"
+        ></a-asset>
+      </a-assets>
+
+      <!-- Layout -->
+      <a-gltf-model
+        src="#level-one-nav"
+        nav-mesh
+        visible="false"
+      ></a-gltf-model>
+
+      <!-- Camera -->
+      <a-entity
+        movement-controls="speed: 0.15; constrainToNavMesh: true"
+        rotation="0 -90 0"
+      >
+        <a-entity
+          camera
+          position="0 1.6 0"
+          look-controls="pointerLockEnabled: true"
+          ><a-entity
+            velocity="0 -1.0297350002801977 0"
+            cursor
+                     
+            position="0 0 -1"
+            geometry="primitive: sphere; radius: 0.007"
+            material="color: #000000;  opacity: 0.5"
+          ></a-entity></a-entity
+      ></a-entity>
+
+      <!------------------------------ Level 1 ------------------------------>
+      <!-- Roof "sky" -->
+
+      <a-plane
+        material="side: double; src:#sky"
+        position="0 8 0"
+        rotation="-90 0 0"
+        scale="6 6 6"
+        light="type: ambient; color: grey; intensity: 1"
+      ></a-plane>
+
+      <!-- 1) Click on box to display text-->
+      <a-entity id="room">
+        <a-box
+          id="intro-box"
+          material="color: #7CFC00; opacity:0.5 "
+          position="2.5 0.5 2.5"
+          scale="1 1 1"
+          rotation="0 90 0"
+          event-set__enter="_event: mouseenter; material.opacity: 1"
+          event-set__leave="_event: mouseleave; material.opacity: 0.5"
+          
+          event-set__firstpanelvisible="_event: click; _target: #first-panel; visible: true;"
+               event-set__instructionsvisible="_event: click; _target: #level-one-instructions; visible: true;"
+        ></a-box>
+
+        <!-- Text with instructions, visible when click on box-->
+      
+
+        
+        <a-plane id="level-one-instructions"
+          position="2 2 0"
+          rotation="0 -90 0"
+          visible="false"
+ 
+                 src="#text"
+                 transparent="true"
+              
+               ></a-plane>
+
+
+        
+
+        <!-- First wall with instructions -->
+        <a-plane
+          color="pink"
+          scale="6 8 2"
+          position="3 4 0"
+          material="side: double; shader: flat;"
+          rotation="0 90 0"
+          light="type: directional; color: grey; intensity: 0.3"
+        ></a-plane>
+
+        <!--2) Panel on first wall with instructions, click to display second panel-->
+        <a-entity
+          id="first-panel"
+          scale="0.3 0.3 0.3"
+          position="2.7 4 0"
+          gltf-model="#swirl"
+          rotation="0 90 0"
+          visible="false"
+          animation="property: material.opacity; 
+                   from: 0; to: 1; 
+                   loop:true; dur: 1500; 
+                   easing: linear;"
+          event-set__showsecondpanel="_event: click; _target: #second-panel; visible: true;"
+        ></a-entity>
+
+        <!-- Second wall-->
+        <a-plane
+          color="pink"
+          scale="6 8 2"
+          position="-2.7 4 0"
+          material="side: double"
+          rotation="0 90 0"
+        ></a-plane>
+
+        <!-- 3) Panel on second wall click to display third panel and hide first-->
+        <a-plane
+          id="second-panel"
+          scale="0.5 0.5 0.5"
+          position="-2 4 1"
+          material="side: double; color: #7CFC00"
+          rotation="0 90 0"
+          visible="false"
+          animation="property: material.opacity; 
+                   from: 1; to: 0; 
+                   loop:true; dur: 1500; 
+                   easing:easeInOutCubic;"
+          event-set__showthirdpanel="_event: click; _target: #third-panel; visible: true;"
+          event-set__hidesecondpanel="_event: click; _target: #first-panel; visible: false;"
+        ></a-plane>
+
+        <!-- Third wall-->
+        <a-plane
+          scale="6 8 2"
+          position="0 4 3"
+          material="side: double; color: pink"
+        ></a-plane>
+
+        <!-- 4) Panel on third wall click to display fourth panel and hide second-->
+        <a-plane
+          id="third-panel"
+          scale="0.5 0.5 0.5"
+          position="2 2 2.7"
+          material="color: #7CFC00; opacity:0.5; side: double"
+          visible="false"
+          animation="property: material.opacity; 
+                   from: 0; to: 1; 
+                   loop:true; dur: 1500; 
+                   easing: linear;"
+          event-set__showfourthpanel="_event: click; _target: #fourth-panel; visible: true;"
+          event-set__hidesecondpanel="_event: click; _target: #second-panel; visible: false;"
+        ></a-plane>
+
+        <!-- Fourth wall-->
+        <a-plane
+          id="fourth-wall"
+          scale="6 8 2"
+          position="0 4 -3"
+          material="side: double; color: pink"
+        ></a-plane>
+
+        <!-- 4) Panel on fourth wall click to display roof  and hide third-->
+        <a-plane
+          id="fourth-panel"
+          scale="0.5 0.5 0.5"
+          position="0 4 -2.7"
+          material="color: #7CFC00; opacity:0.5; side: double"
+          visible="false"
+          animation="property: material.opacity; 
+                   from: 1; to: 0; 
+                   loop:true; dur: 1500; 
+                   easing:easeInOutCubic;"
+          event-set__hidethirdpanel="_event: click; _target: #third-panel; visible: false;"
+          event-set__showroof="_event: click; _target: #to-level-two; visible: true;"
+        ></a-plane>
+
+        <a-plane
+          id="to-level-two"
+          scale="0.5 0.5 0.5"
+          position="0 7 0"
+          rotation="-90 0 0"
+          material="color: #7CFC00; opacity:0.5; side: double"
+          visible="false"
+          animation="property: material.opacity; 
+                   from: 1; to: 0; 
+                   loop:true; dur: 1500; 
+                   easing:easeInOutCubic;"
+          event-set__hidethirdpanel="_event: click; _target: #fourth-panel; visible: false;"
+        ></a-plane>
+      </a-entity>
+
+      <a-plane color="pink" rotation="-90 0 0" scale="20 20 0"></a-plane>
+    </a-scene>
+  </body>
+</html>
