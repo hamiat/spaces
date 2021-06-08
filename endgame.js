@@ -2,13 +2,13 @@
 window.onload = init();
 
 function init() {
-    const endStar = document.querySelector("#open-sky")
+    const endSwirl = document.querySelector("#end-the-game");
    
 
-    endStar.addEventListener("click", endLevel);
+    endSwirl.addEventListener("click", endGame);
 
-    function endLevel() {
-        location.href = "common-room.html";
+    function endGame() {
+        location.href = "index.html";
     }
   }
 
