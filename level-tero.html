@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dreams in space - Level Two</title>
+
+    <script src="/endgame.js"></script>
+
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component/dist/aframe-proxy-event-component.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene endgame inspector-plugin-recast>
+      <!-- Assets -->
+      <a-assets>
+        <img id="galaxy" src="/assets/sky.jpg" />
+        <img id="sand" src="/assets/sand.png" />
+        
+        <a-asset-item id="star" src="/assets/star.glb"> </a-asset-item>
+        <a-asset-item id="level-two-nav-mesh" src="assets/leveltwonammesh.gltf"> </a-asset-item>
+      </a-assets>
+
+      <!-- Camera -->
+      <a-entity
+        movement-controls="speed: 0.15; constrainToNavMesh: true"
+        rotation="0 -90 0"
+      >
+        <a-entity
+          camera
+          position="0 2.6 -65"
+          look-controls="pointerLockEnabled: true"
+          ><a-entity
+            velocity="0 -1.0297350002801977 0"
+            cursor
+            position="0 0 -1"
+            geometry="primitive: sphere; radius: 0.007"
+            material="color: #FFFFFF;  opacity: 0.5"
+          ></a-entity> </a-entity
+      ></a-entity>
+
+      <!-- Sky -->
+      <a-sky src="#galaxy" rotation="0 0 0" radius="100"></a-sky>
+
+      <!---------- Level 1 (epilogue) --------------->
+
+      <a-gltf-model id="remove-sky-mesh" position="0 -0.7 0" src="#level-two-nav-mesh" visible="false" nav-mesh></a-gltf-model>
+
+      <!-- level 1 Ground-->
+
+      <a-plane
+        src="#groundTexture"
+        rotation="-90 0 0"
+        color="#303030"
+        scale="25 25 25"
+        position="65 0 0"
+      >
+      </a-plane>
+      <!-- Small house -->
+      <a-plane
+        color="pink"
+        scale="0.5 0.5 0.5"
+        position="65 0 2.5"
+        side="double"
+        material=""
+        geometry=""
+      ></a-plane>
+      <a-plane
+        color="pink"
+        scale="0.5 0.5 0.5"
+        position="64.74 0 2.24"
+        rotation="0 90 0"
+        side="double"
+        geometry=""
+      ></a-plane>
+      <a-plane
+        color="pink"
+        scale="0.5 0.5 0.5"
+        position="65 0 2"
+        side="double"
+        material=""
+        geometry=""
+      ></a-plane>
+      <a-plane
+        color="pink"
+        scale="0.5 0.5 0.5"
+        position="65.25 0 2.25"
+        side="double"
+        rotation="0 90 0"
+        material=""
+        geometry=""
+      ></a-plane>
+
+      <a-box
+        scale="0.2 0.2 0.2"
+        position="64.85 0.1 2.12"
+        color="green"
+      ></a-box>
+
+      <!-- Path to level 2 -->
+      <a-gltf-model src="#star"
+      id="to-levtwo-btn"
+      position="30 15 -2"
+     scale="0.01 0.01 0.01"
+      event-set__showquickpath="_event: click; _target: #path-to-levtwo; visible: true;"
+    >
+    </a-gltf-model>
+    <a-box
+    id="path-to-levtwo"
+    src="#bricks"
+    position="32 0 0"
+    scale="42 2 1"
+    rotation="-90 0 0"
+    color="#909090"
+    opacity="0.3"
+    
+    visible="false">
+
+    
+  </a-box>
+
+  <!----------------------------------------Level 2 ------------------------------------------------>
+      <!-- Ground -->
+      <a-plane
+        src="#sand"
+        rotation="-90 0 0"
+        color="#303030"
+        scale="25 25 25"
+        position="0 0 0"
+      
+      >
+      </a-plane>
+
+       <!-- Objects that reveal path-->
+       <a-box
+       id="path-one-block"
+       position="-10 0.5 0"
+       color="#ffd66e"
+       event-set__showpathone="_event: click; _target: #path-one-box; visible:true;"
+   
+     ></a-box>
+
+     <a-box
+       id="path-two-block"
+       position="4 0.5 -8"
+       color="#f8d57c"
+       event-set__showpathtwo="_event: click; _target: #path-two-box; visible: true;"
+       
+     ></a-box>
+     <a-box
+       id="path-three-block"
+       position="-8 0.5 -6"
+       color="#fae5ac"
+       event-set__showpaththree="_event: click; _target: #path-three-box; visible: true;"
+      
+     ></a-box>
+     <a-box
+       id="path-four-block"
+       position="9 0.5 -5"
+       color="#fcecc4"
+       event-set__showpathfour="_event: click; _target: #path-four-box; visible: true;"
+  
+     ></a-box>
+     <a-box
+       id="path-five-block"
+       position="10 0.5 2"
+       color="#fdf4dc"
+       event-set__showpathfive="_event: click; _target: #path-five-box; visible: true;"
+  
+     ></a-box>
+
+     <!-- Objects that removes paths -->
+     <a-box
+       id="remove-path-one-box"
+       position="-6 0.5 3"
+       color="red"
+       event-set__removepathone="_event: click; _target: #path-one-box; visible: false;"
+     ></a-box>
+     <a-box
+       id="remove-path-two"
+       position="2 0.5 -5"
+       color="red"
+       event-set__removepathtwo="_event: click; _target: #path-two-box; visible: false;"
+     ></a-box>
+     <a-box
+       id="remove-path-three"
+       position="6 0.5 3"
+       color="red"
+       event-set__removepaththree="_event: click; _target: #path-three-box; visible: false;"
+     ></a-box>
+
+     <!-- Objects for Level 2 Distraction Path -->
+     <a-box
+       position="-6 0.5 -3"
+       color="green"
+       event-set__shownonpath="_event: click; _target: #not-path-one; visible: true;"
+     ></a-box>
+
+     <a-box
+       position="-9 0.5 3.5"
+       color="green"
+       event-set__shownonpath="_event: click; _target: #not-path-two; visible: true;"
+     ></a-box>
+
+     <a-box
+       position="6 0.5 -3"
+       color="green"
+       event-set__shownonpath="_event: click; _target: #not-path-three; visible: true;"
+     ></a-box>
+     <a-box
+       position="0 0.5 9"
+       color="green"
+       event-set__shownonpath="_event: click; _target: #not-path-four; visible: true;"
+     ></a-box>
+     <a-box
+       position="8 0.5 -8"
+       color="green"
+       event-set__shownonpath="_event: click; _target: #not-path-five; visible: true;"
+     ></a-box>
+
+     <!-------- PATHS --------->
+
+     <!-- Level 2 Path -->
+     <a-box
+       id="path-one-box"
+       position="-5 0 -17.5"
+       scale="2 1 10"
+       color="#ffd66e"
+       visible="true"
+     ></a-box>
+
+     <a-box
+       id="path-two-box"
+       position="-12 0 -22.5"
+       scale="15 1 2"
+       color="#f8d57c"
+       visible="true"
+      
+     ></a-box>
+
+     <a-box
+       id="path-three-box"
+       position="-17 0 -12"
+       scale="2 1 20"
+       color="#fae5ac"
+       visible="true"
+     ></a-box>
+
+     <a-box
+       id="path-four-box"
+       position="-30. 0 -6"
+       scale="25 1 2"
+       color="#fcecc4"
+       visible="true"
+       
+     ></a-box>
+
+     <a-box
+       id="path-five-box"
+       position="-47 0 -8"
+       scale="11.5 1 2"
+       color="#fdf4dc"
+       visible="true"
+      
+     ></a-box>
+
+     <!-- Level 2 Distraction Path -->
+     <a-box
+       id="not-path-one"
+       position="-24.5 0 -22.5"
+       scale="10 1 2"
+       color="#800000"
+       visible="true"
+      
+     ></a-box>
+     <a-box
+       id="not-path-two"
+       position="-28 0 -33"
+       scale="20 1 2"
+       color="#800000"
+       visible="true"
+       
+       rotation="0 90 0"
+     ></a-box>
+     <a-box
+       id="not-path-three"
+       position="-38 0 -34"
+       scale="10 1 2"
+       color="#800000"
+       visible="true"
+       
+       rotation="0 90 0"
+     ></a-box>
+
+     <a-box
+       id="not-path-four"
+       position="-34 0 -28.5"
+       scale="10 1 2"
+       color="#800000"
+       visible="true"
+       
+     ></a-box>
+     <a-box
+       id="not-path-five"
+       position="-33 0 -38.5"
+       scale="10 1 2"
+       color="#800000"
+       visible="true"
+     
+     ></a-box>
+     
+     
+      <!---------------------------------------- Level 3 ------------------------------------------->
+      <!-- Ground level three -->
+      <a-plane
+        src="#groundTexture"
+        rotation="-90 0 0"
+        color="#303030"
+        scale="25 25 25"
+        position="-65 0 0"
+      >
+      </a-plane>
+      
+       <!-- Objects that reveal level 3 path-->
+      <a-box
+        id="path-six-block"
+        position="-61 0.5 -9"
+        color="#ffd66e"
+        event-set__showpathone="_event: click; _target: #path-six-box; visible: true;"
+     
+      ></a-box>
+
+      <a-box
+        id="path-seven-block"
+        position="-65 0.5 4"
+        color="#f8d57c"
+        event-set__showpathtwo="_event: click; _target: #path-seven-box; visible: true;"
+        
+      ></a-box>
+      <a-box
+        id="path-eight-block"
+        position="-57 0.5 4"
+        color="#fae5ac"
+        event-set__showpaththree="_event: click; _target: #path-eight-box; visible: true;"
+        
+      ></a-box>
+      <a-box
+        id="path-nine-block"
+        position="-73 0.5 6"
+        color="#fcecc4"
+        event-set__showpathfour="_event: click; _target: #path-nine-box; visible: true;"
+    
+      ></a-box>
+      <a-box
+        id="path-ten-block"
+        position="-73 0.5 0"
+        color="#fdf4dc"
+        event-set__showpathfive="_event: click; _target: #path-ten-box; visible: true;"
+        
+      ></a-box>
+
+      
+      <!-- Objects for Level 3 Distraction Path -->
+      <a-box
+        position="-59 0.5 -6"
+        color="green"
+        event-set__shownonpath="_event: click; _target: #not-path-six; visible: true;"
+      ></a-box>
+
+      <a-box
+        position="-65 0.5 -5.5"
+        color="green"
+        event-set__shownonpath="_event: click; _target: #not-path-seven; visible: true;"
+      ></a-box>
+
+      <a-box
+        position="-61 0.5 -0.5"
+        color="green"
+        event-set__shownonpath="_event: click; _target: #not-path-eight; visible: true;"
+      ></a-box>
+      <a-box
+        position="-68 0.5 9"
+        color="green"
+        event-set__shownonpath="_event: click; _target: #not-path-nine; visible: true;"
+      ></a-box>
+      <a-box
+        position="-61 0.5 8"
+        color="green"
+        event-set__shownonpath="_event: click; _target: #not-path-ten; visible: true;"
+      ></a-box>
+
+         <!-- Object to remove paths-->
+
+         <a-box
+         position="-68 0.5 3"
+         color="blue"
+         event-set__shownonpath="_event: click; _target: #path-six-block; visible: false;"
+       ></a-box>
+
+       <a-box
+       position="-56 0.5 -0.5"
+       color="blue"
+       event-set__shownonpath="_event: click; _target: #path-eight-block; visible: false;"
+     ></a-box>
+
+       <a-box
+       position="-68 0.5 -5"
+       color="blue"
+       event-set__shownonpath="_event: click; _target: #path-ten-block; visible: false;"
+     ></a-box>
+
+      
+      <!-- Path to finish level three -->
+   
+<a-box id="path-six-box" position="-62 0 20" scale="10 1 2" color="#ffd66e" rotation="0 90 0" visible="true"></a-box>
+
+<a-box id="path-seven-box" position="-82 0 2" scale="10 1 2" color="#f8d57c" visible="true"></a-box>
+<a-box id="path-eight-box" position="-84 0 12" scale="2 1 20" color="#fae5ac" visible="true"></a-box>
+<a-box id="path-nine-box" position="-55 0 12" scale="4 1 2" color="#fcecc4" visible="true" rotation="0 90 0"></a-box>
+
+<a-box id="path-ten-box" position="-70 0 15" scale="30 1 2" color="#fdf4dc" visible="true"></a-box>
+      
+    <!-- Level 3 Distraction Path  -->
+<a-box id="not-path-six" position="-79 0 -10" scale="5 1 2"  color="red" visible="true"></a-box>
+<a-box id="not-path-seven" position="-81 0 -14" scale="6 1 2" color="red" visible="true" rotation="0 90 0"></a-box>
+
+<a-box id="not-path-eight" position="-86 0 18" scale="5 1 2" color="red" visible="true"></a-box>
+<a-box id="not-path-nine" position="-83 0 -17" scale="10 1 2" color="red" visible="true"></a-box>
+<a-box id="not-path-ten" position="-90 0 0.5" scale="10 1 2" color="red" rotation="0 90 0" visible="true" ></a-box>
+     
+  <!-- Open sky to exit (and end) level-->
+  <a-gltf-model src="#star"
+  id="open-sky"
+  position="-90.41952 10 -2"
+ scale="0.05 0.05 0.05"
+ remove-mesh
+>
+</a-gltf-model>
+
+
+    </a-scene>
+  </body>
+</html>

@@ -8,7 +8,7 @@ function init() {
     endStar.addEventListener("click", endLevel);
 
     function endLevel() {
-      
+        location.href = "common-room.html";
     }
   }
 
