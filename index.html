@@ -18,20 +18,15 @@
     <a-scene toleveltwo inspector-plugin-recast>
       <!--Assets-->
       <a-assets>
-        <img
-          id="small-sky"
-          src="/assets/small-sky.jpg"
-        />
-        <img
-          id="text"
-          src="/assets/text.png"
-        />
+        <img id="small-sky" src="/assets/small-sky.jpg" />
+        <img id="text" src="/assets/text.png" />
         <a-asset-item id="star" src="/assets/star.glb"> </a-asset-item>
         <a-asset
           id="level-one-nav"
           src="/assets/first-level-mesh.gltf"
         ></a-asset>
         <a-asset-item id="star" src="/assets/star.glb"> </a-asset-item>
+        <a-asset-item id="swirl" src="/assets/swirl.glb"> </a-asset-item>
       </a-assets>
 
       <!-- Layout -->
@@ -41,7 +36,7 @@
         visible="false"
       ></a-gltf-model>
 
-      <!-- Camera -->
+      <!-- Camera and lights -->
       <a-entity
         movement-controls="speed: 0.15; constrainToNavMesh: true"
         rotation="0 -90 0"
@@ -53,11 +48,19 @@
           ><a-entity
             velocity="0 -1.0297350002801977 0"
             cursor
-                     
             position="0 0 -1"
             geometry="primitive: sphere; radius: 0.007"
             material="color: #000000;  opacity: 0.5"
           ></a-entity></a-entity
+      ></a-entity>
+
+      <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+      <a-entity
+        light="type: directional;
+                   castShadow: true;
+                   intensity: 0.4;
+                 "
+        position="-5 3 1.5"
       ></a-entity>
 
       <!------------------------------ Level 1 ------------------------------>
@@ -68,7 +71,6 @@
         position="0 8 0"
         rotation="-90 0 0"
         scale="6 6 6"
-        light="type: ambient; color: #313131; intensity: 1; castShadow:true;"
       ></a-plane>
 
       <!-- 1) Click on box to display text-->
@@ -81,28 +83,22 @@
           rotation="0 90 0"
           event-set__enter="_event: mouseenter; material.opacity: 1"
           event-set__leave="_event: mouseleave; material.opacity: 0.5"
-          
           event-set__firstpanelvisible="_event: click; _target: #first-panel; visible: true;"
-               event-set__instructionsvisible="_event: click; _target: #level-one-instructions; visible: true;"
+          event-set__instructionsvisible="_event: click; _target: #level-one-instructions; visible: true;"
         ></a-box>
 
         <!-- Text with instructions, visible when click on box-->
-      
 
-        
-        <a-plane id="level-one-instructions"
+        <a-plane
+          id="level-one-instructions"
           position="2 2.5 0"
           rotation="0 -90 0"
           visible="false"
- 
-                 src="#text"
-                 transparent="true"
-                 scale="1.5 1.5 1.5"
-              
-               ></a-plane>
-
-
-        
+          src="#text"
+          transparent="true"
+          scale="1.5 1.5 1.5"
+          color="#313131"
+        ></a-plane>
 
         <!-- First wall with instructions -->
         <a-plane
@@ -111,19 +107,17 @@
           position="3 4 0"
           material="side: double; shader: flat;"
           rotation="0 90 0"
-         
         ></a-plane>
 
         <!--2) Panel on first wall with instructions, click to display second panel-->
         <a-entity
           id="first-panel"
           scale="0.003 0.003 0.003"
-          position="2.5 4.4 0"
+          position="2.5 5.5 0"
           gltf-model="#star"
           rotation="0 0 20"
-          visible="true"
-        
-          animation="property: position; dur: 1500; loop: true; dir:alternate; to: 2.5 4.5 0;"
+          visible="false"
+          animation="property: position; dur: 1500; loop: true; dir:alternate; to: 2.5 5.6 0;"
           event-set__showsecondpanel="_event: click; _target: #second-panel; visible: true;"
           event-set__hideself="_event: click; _target: #first-panel; visible: false"
         ></a-entity>
@@ -144,8 +138,7 @@
           scale="0.003 0.003 0.003"
           position="-2 4 1"
           rotation="0 0 0"
-          visible="true"
-         
+          visible="false"
           animation="property: position; dur: 1500; loop: true; dir:alternate; to: -2 4.5 1;"
           event-set__showthirdpanel="_event: click; _target: #third-panel; visible: true;"
           event-set__hidesecondpanel="_event: click; _target: #first-panel; visible: false;"
@@ -166,10 +159,7 @@
           scale="0.003 0.003 0.003"
           position="2 2 2.7"
           rotation="0 90 20"
-         
-          visible="true"
-
-         
+          visible="false"
           animation="property: position; dur: 1500; loop: true; dir:alternate; to: 2 2.3 2.7;"
           event-set__showfourthpanel="_event: click; _target: #fourth-panel; visible: true;"
           event-set__hidesecondpanel="_event: click; _target: #second-panel; visible: false;"
@@ -191,27 +181,22 @@
           scale="0.003 0.003 0.003"
           position="0 4 -2.5"
           rotation="0 90 20"
-          visible="true"
-          light="type: ambient; color: #000000; intensity: 0.1"
+          visible="false"
           animation="property: position; dur: 1500; loop: true; dir:alternate; to: 0 4.1 -2.5;"
           event-set__hidethirdpanel="_event: click; _target: #third-panel; visible: false;"
           event-set__showroof="_event: click; _target: #to-level-two; visible: true;"
           event-set__hideself="_event: click; _target: #fourth-panel; visible: false"
         ></a-entity>
 
-        <a-plane
+        <a-entity
           id="to-level-two"
-          scale="0.5 0.5 0.5"
+          gltf-model="#swirl"
+          scale="0.3 0.3 0.3"
           position="0 7 0"
-          rotation="-90 0 0"
-          material="color: #7CFC00; opacity:0.5; side: double"
           visible="false"
-          animation="property: material.opacity; 
-                   from: 1; to: 0; 
-                   loop:true; dur: 1500; 
-                   easing:easeInOutCubic;"
+          animation__spin="property: rotation; dur: 50000; loop: true; to: 0 1490 0;"
           event-set__hidethirdpanel="_event: click; _target: #fourth-panel; visible: false;"
-        ></a-plane>
+        ></a-entity>
       </a-entity>
 
       <a-plane color="pink" rotation="-90 0 0" scale="20 20 0"></a-plane>
