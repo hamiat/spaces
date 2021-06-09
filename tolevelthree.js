@@ -7,7 +7,9 @@ function init() {
 
   function nextLevel() {
     
-    location.href = "level-three.html";
+    location.href = "https://sumanasattar.github.io/A-frame-project";
   }
+
+  
 
 }
