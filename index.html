@@ -5,18 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dreaming of Space</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
 
     <script>
       function hide() {
-                let x = document.getElementById('hide-div')
-                if (x.style.display === "none") {
-                    x.style.display = "block";
-                } else {
-                    x.style.display = "none";
-                }
-            }
-
+        let x = document.getElementById("hide-div");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
     </script>
 
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
@@ -25,26 +24,20 @@
     <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
     <script src="https://unpkg.com/aframe-proxy-event-component/dist/aframe-proxy-event-component.min.js"></script>
     <script defer src="toleveltwo.js"></script>
-    
-    
   </head>
 
   <body>
     <div class="instruction-container" id="hide-div">
-         
-     
-      <h1> Follow the stars, they'll guide you out of this dream.
-      </h1><br>
+      <h1>Follow the stars, they'll guide you out of this dream.</h1>
+      <br />
       <button id="start" onclick="hide()">START</button>
-
-        </div>
-
+    </div>
 
     <a-scene toleveltwo inspector-plugin-recast>
       <!--Assets-->
       <a-assets>
-        <img id="small-sky" src="assets/small-sky.jpg"/>
-        <img id="text" src="assets/text.png"/>
+        <img id="small-sky" src="assets/small-sky.jpg" />
+        <img id="text" src="assets/text.png" />
         <a-asset-item id="star" src="assets/star.glb"> </a-asset-item>
         <a-asset
           id="level-one-nav"
@@ -78,11 +71,10 @@
           camera
           position="0 1.6 0"
           look-controls="pointerLockEnabled: true"
-          >
-        <!--
-          <a-sound id="bleep" src="url(assets/level-one-sound.wav)" autoplay="true"
-          position="0 0 0" loop="true" volume="0.2"></a-sound>-->
-          
+        >
+        <a-sound src="url(assets/space-sound.mp3)" autoplay="true"
+        position="0 0 0" loop="true" volume="0.5"></a-sound>
+
           <a-entity
             velocity="0 -1.0297350002801977 0"
             cursor
@@ -123,7 +115,6 @@
           event-set__leave="_event: mouseleave; material.opacity: 0.5"
           event-set__firstpanelvisible="_event: click; _target: #first-panel; visible: true;"
           event-set__instructionsvisible="_event: click; _target: #level-one-instructions; visible: true;"
-          
         ></a-box>
 
         <!-- Text with instructions, visible when click on box-->
