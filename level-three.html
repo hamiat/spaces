@@ -7,7 +7,7 @@
     <title>Space Dreamer</title>
 
     <script defer src="endgame.js"></script>
-   
+
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
     <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
@@ -16,12 +16,7 @@
   </head>
 
   <body>
-    <a-scene
-    tolevelthree
-      endgame
-      inspector-plugin-recast
-      
-    >
+    <a-scene tolevelthree endgame inspector-plugin-recast>
       <!-- Assets -->
 
       <a-assets>
@@ -30,12 +25,9 @@
         <a-asset-item id="star" src="assets/star.glb"> </a-asset-item>
         <a-asset-item id="swirl" src="assets/swirl.glb"> </a-asset-item>
         <a-asset-item id="door" src="assets/door.glb"> </a-asset-item>
-        <img id="text3" src="assets/text-lev-three.png"/>
+        <img id="text3" src="assets/text-lev-three.png" />
 
-        <a-asset-item
-        id="nav"
-        src="assets/navmesh.gltf"
-      ></a-asset-item>
+        <a-asset-item id="nav" src="assets/navmesh.gltf"></a-asset-item>
 
         <!--Level 2 path animals-->
         <a-asset-item id="badger" src="assets/badger.glb"> </a-asset-item>
@@ -84,26 +76,27 @@
           camera
           position="0 2.6 52"
           look-controls="pointerLockEnabled: true"
-          >
-        <!--  <a-sound src="url(assets/space-sound.flac)" autoplay="true"
-               position="0 0 0" loop="true" volume="0.02"></a-sound>-->
+        >
+        <a-sound src="url(assets/space-sound.mp3)" autoplay="true"
+        position="0 0 0" loop="true" volume="0.5"></a-sound>
           <a-entity
             velocity="0 -1.0297350002801977 0"
             cursor
             position="0 0 -1"
             geometry="primitive: sphere; radius: 0.009"
             material="color: #FFFFFF;  opacity: 0.6"
-          ></a-entity> 
-          </a-entity
+          ></a-entity> </a-entity
       ></a-entity>
 
       <a-scene>
         <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
-        <a-entity light="type: directional;
+        <a-entity
+          light="type: directional;
                          castShadow: true;
                          intensity: 0.4;
                       "
-                  position="-5 3 1.5"></a-entity>
+          position="-5 3 1.5"
+        ></a-entity>
       </a-scene>
 
       <!-- Sky -->
@@ -129,7 +122,6 @@
         material="shader: flat;"
       >
       </a-plane>
-  
 
       <!----------------------------------------Level 2 ------------------------------------------------>
       <!-- Ground -->
@@ -144,15 +136,14 @@
       </a-plane>
 
       <a-gltf-model
-      id="door-to-level-three"
-      src="#star"
-      position="-42 2 -7.7"
-      scale="0.001 0.001 0.001"
-      animation="property: position; dur: 1500; loop: true; dir:alternate; to: -42.5 2.2 -7.8;"
-      event-set__enter="_event: mouseenter; scale: 0.001 0.001 0.001"
+        id="door-to-level-three"
+        src="#star"
+        position="-42 2 -7.7"
+        scale="0.001 0.001 0.001"
+        animation="property: position; dur: 1500; loop: true; dir:alternate; to: -42.5 2.2 -7.8;"
+        event-set__enter="_event: mouseenter; scale: 0.001 0.001 0.001"
         event-set__leave="_event: mouseleave; scale: 0.0012 0.0012 0.0012"
       >
-
       </a-gltf-model>
 
       <!---------------------------------------- Level 3 ------------------------------------------->
@@ -182,18 +173,17 @@
       ></a-gltf-model>
 
       <a-plane
-      id="level-three-instructions"
-      position="-51 5 -9"
-      rotation="0 0 0"
-      visible="false"
-      src="#text3"
-      transparent="true"
-      scale="1.5 1.5 1.5"
-      color="#313131"
-      event-set__enter="_event: mouseenter; transparent:false; scale: 2 2 2;"
-    event-set__leave="_event: mouseleave; transparent:true"
-    ></a-plane>
- 
+        id="level-three-instructions"
+        position="-51 5 -9"
+        rotation="0 0 0"
+        visible="false"
+        src="#text3"
+        transparent="true"
+        scale="1.5 1.5 1.5"
+        color="#313131"
+        event-set__enter="_event: mouseenter; transparent:false; scale: 2 2 2;"
+        event-set__leave="_event: mouseleave; transparent:true"
+      ></a-plane>
 
       <a-gltf-model
         id="path-seven-block"
@@ -432,7 +422,6 @@
         visible="false"
         opacity="0.5"
         animation="property: position; dur: 1500; loop: true; dir:alternate; to: -105.5 6 1.2;"
-       
       >
       </a-gltf-model>
     </a-scene>
