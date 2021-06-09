@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Space dreamer</title>
+    <title>Space Dreamer</title>
 
-    <script defer src="endgame.js"></script>
+    
+    <script defer src="tolevelthree.js"></script>
 
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
     <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
@@ -17,9 +18,10 @@
 
   <body>
     <a-scene
-      endgame
+    tolevelthree
+      
       inspector-plugin-recast
-      light="defaultLightsEnabled: false"
+      
     >
       <!-- Assets -->
 
@@ -28,7 +30,8 @@
         <img id="sand" src="assets/sand.png" />
         <a-asset-item id="star" src="assets/star.glb"> </a-asset-item>
         <a-asset-item id="swirl" src="assets/swirl.glb"> </a-asset-item>
-       
+        <a-asset-item id="door" src="assets/door.glb"> </a-asset-item>
+
         <a-asset-item
         id="nav"
         src="assets/navmesh.gltf"
@@ -89,6 +92,15 @@
             material="color: #FFFFFF;  opacity: 0.6"
           ></a-entity> </a-entity
       ></a-entity>
+
+      <a-scene>
+        <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+        <a-entity light="type: directional;
+                         castShadow: true;
+                         intensity: 0.4;
+                      "
+                  position="-5 3 1.5"></a-entity>
+      </a-scene>
 
       <!-- Sky -->
       <a-sky src="#galaxy" rotation="0 0 0" radius="100"></a-sky>
@@ -393,10 +405,22 @@
         scale="11.5 1 2"
         opacity="0.8"
         color="pink"
-        visible="false"
+        visible="true"
         event-set__enter="_event: mouseenter; material.opacity: 1"
         event-set__leave="_event: mouseleave; material.opacity: 0.8"
       ></a-box>
+
+      <a-gltf-model
+      id="door-to-level-three"
+      src="#star"
+      position="-42 2 -7.7"
+      scale="0.001 0.001 0.001"
+      animation="property: position; dur: 1500; loop: true; dir:alternate; to: -42.5 2.2 -7.8;"
+      event-set__enter="_event: mouseenter; scale: 0.001 0.001 0.001"
+        event-set__leave="_event: mouseleave; scale: 0.0012 0.0012 0.0012"
+      >
+
+      </a-gltf-model>
 
       <!-- Level 2 Distraction Path -->
       <a-box
@@ -467,7 +491,6 @@
 
       <!-- Objects that reveal level 3 path-->
       <a-gltf-model
-        id="path-six-block"
         src="#dove"
         scale="0.25 0.25 0.25"
         position="-51 0.5 -9"
@@ -476,244 +499,6 @@
         event-set__shownextanimalok_="_event: click; _target: #path-seven-block; visible: true"
         event-set__shownextanimalnotok_="_event: click; _target: #not-path-block-one; visible: true"
       ></a-gltf-model>
-
-      <a-gltf-model
-        id="path-seven-block"
-        src="#giraffe"
-        position="-55 0.5 4"
-        scale="0.1 0.1 0.1"
-        color="#f8d57c"
-        visible="false"
-        event-set__shownpathseven="_event: click; _target: #path-seven-box; visible: true;"
-        event-set__shownextanimalok_="_event: click; _target: #path-eight-block; visible: true"
-        event-set__shownextanimalnotok_="_event: click; _target: #not-path-block-two; visible: true"
-      ></a-gltf-model>
-
-      <a-gltf-model
-        id="path-eight-block"
-        src="#owl"
-        scale="0.05 0.05 0.05"
-        position="-48.3 0.5 5.4"
-        visible="false"
-        event-set__shownpatheight="_event: click; _target: #path-eight-box; visible: true;"
-        event-set__shownextanimalok_="_event: click; _target: #path-nine-block; visible: true"
-        event-set__shownextanimalnotok_="_event: click; _target: #remove-box-one; visible: true"
-      ></a-gltf-model>
-      <a-gltf-model
-        id="path-nine-block"
-        src="#alligator"
-        scale="0.2 0.2 0.2"
-        rotation="0 54 0"
-        position="-63 0 6"
-        visible="false"
-        event-set__shownpathnine="_event: click; _target: #path-nine-box; visible: true;"
-        event-set__shownextanimalok_="_event: click; _target: #path-ten-block; visible: true"
-        event-set__shownextanimalnotok_="_event: click; _target: #remove-box-two; visible: true"
-      ></a-gltf-model>
-      <a-gltf-model
-        id="path-ten-block"
-        src="#turtle"
-        scale="0.08 0.08 0.08"
-        rotation="0 167 0"
-        position="-60 0.5 9.7"
-        color="#fdf4dc"
-        visible="false"
-        event-set__shownpathten="_event: click; _target: #path-ten-box; visible: true;"
-        event-set__shownextanimalnotok_="_event: click; _target: #not-path-block-three; visible: true"
-        event-set__shownextanimalnotok2_="_event: click; _target: #not-path-block-four; visible: true"
-        event-set__shownextanimalnotok3_="_event: click; _target: #remove-box-three; visible: true"
-        event-set__shownextanimalok_="_event: click; _target: #path-twelve-block; visible: true"
-      ></a-gltf-model>
-
-      <a-gltf-model
-        src="#star"
-        id="path-twelve-block"
-        position="-53 8 4"
-        scale="0.01 0.01 0.01"
-        rotation="0 180 45"
-        visible="false"
-        event-set__shownpathseven="_event: click; _target: #path-twelve-box; visible: true;"
-        event-set__shownextanimalok_="_event: click; _target: #end-the-game; visible: true"
-      ></a-gltf-model>
-
-      <!-- Objects for Level 3 Distraction Path -->
-      <a-gltf-model
-        src="#poodle"
-        scale="0.05 0.05 0.05"
-        id="not-path-block-one"
-        position="-49 0 -6"
-        visible="false"
-        event-set__shownonpath="_event: click; _target: #not-path-six; visible: true;"
-      ></a-gltf-model>
-
-      <a-gltf-model
-        id="not-path-block-two"
-        src="#lion"
-        scale="0.15 0.15 0.15"
-        rotation="0 134 0"
-        position="-51 0 -1.8"
-        visible="false"
-        event-set__shownonpath="_event: click; _target: #not-path-seven; visible: true;"
-        event-set___hideanimal="_event: click; _target: #not-path-block-one; visible: false"
-      ></a-gltf-model>
-
-      <a-gltf-model
-        src="#cattlehorn"
-        id="not-path-block-three"
-        position="-47 0 7.6"
-        scale="0.15 0.15 0.15"
-        rotation="0 129 0"
-        visible="false"
-        event-set__shownonpath="_event: click; _target: #not-path-eight; visible: true;"
-      ></a-gltf-model>
-      <a-gltf-model
-        src="#bird"
-        id="not-path-block-four"
-        position="-52 0 9"
-        scale="1 1 1"
-        visible="false"
-        event-set__shownonpath="_event: click; _target: #not-path-nine; visible: true;"
-        event-set___hideanimal="_event: click; _target: #path-ten-box; visible: false"
-      ></a-gltf-model>
-
-      <!-- Object to remove paths-->
-
-      <a-gltf-model
-        id="remove-box-one"
-        src="#gorilla"
-        position="-58 0 3"
-        scale="0.1 0.1 0.1"
-        rotation="0 83 0"
-        event-set__shownonpath="_event: click; _target: #path-six-block; visible: false;"
-        visible="false"
-      ></a-gltf-model>
-
-      <a-gltf-model
-        id="remove-box-two"
-        src="#butterfly"
-        position="-46 1.5 4"
-        scale="0.3 0.3 0.3"
-        rotation="0 46 0"
-        visible="false"
-        animation="property: position; dur: 1500; loop: true; dir:alternate; to: -46.5 1.7 -0.4;"
-        event-set__shownonpath="_event: click; _target: #path-eight-block; visible: false;"
-        event-set___hideanimal="_event: click; _target: #path-seven-nine; visible: false;"
-      ></a-gltf-model>
-
-      <a-gltf-model
-        src="#bison"
-        id="remove-box-three"
-        position="-58 0 -5"
-        scale="0.1 0.1 0.1"
-        visible="false"
-        event-set__shownonpath="_event: click; _target: #path-ten-block; visible: false;"
-        event-set___hideanimal="_event: click; _target: #path-seven-box; visible: false"
-      ></a-gltf-model>
-
-      <!-- Level 3 paths -->
-
-      <a-box
-        id="path-six-box"
-        position="-52 -0.7 20"
-        scale="10 1 2"
-        opacity="0.8"
-        color="pink"
-        rotation="0 90 0"
-        visible="false"
-      ></a-box>
-
-      <a-box
-        id="path-seven-box"
-        position="-72 -0.7 2"
-        scale="10 1 2"
-        opacity="0.8"
-        color="pink"
-        visible="false"
-      ></a-box>
-      <a-box
-        id="path-eight-box"
-        position="-74 -0.7 9"
-        scale="2 1 14"
-        opacity="0.8"
-        color="pink"
-        visible="false"
-      ></a-box>
-      <a-box
-        id="path-nine-box"
-        position="-45 -0.7 12"
-        scale="4 1 2"
-        opacity="0.8"
-        color="pink"
-        visible="false"
-        rotation="0 90 0"
-      ></a-box>
-
-      <a-box
-        id="path-ten-box"
-        position="-60 -0.7 15"
-        scale="30 1 2"
-        opacity="0.8"
-        color="pink"
-        visible="false"
-      ></a-box>
-
-      <a-box
-        id="path-twelve-box"
-        position="-82 -0.7 0.59"
-        scale="16 1 2"
-        opacity="0.8"
-        color="pink"
-        visible="false"
-      ></a-box>
-
-      <!-- Level 3 Distraction Path  -->
-      <a-box
-        id="not-path-six"
-        position="-69 -0.7 -10"
-        scale="5 1 2"
-        opacity="0.8"
-        color="pink"
-        visible="false"
-      ></a-box>
-      <a-box
-        id="not-path-seven"
-        position="-71 -0.7 -14"
-        scale="6 1 2"
-        opacity="0.8"
-        color="pink"
-        visible="false"
-        rotation="0 90 0"
-      ></a-box>
-
-      <a-box
-        id="not-path-eight"
-        position="-77 -0.7 11"
-        scale="5 1 2"
-        opacity="0.8"
-        color="pink"
-        visible="false"
-      ></a-box>
-      <a-box
-        id="not-path-nine"
-        position="-73 -0.7 -17"
-        scale="10 1 2"
-        opacity="0.8"
-        color="pink"
-        visible="false"
-      ></a-box>
-
-      <!--end game-->
-
-      <a-gltf-model
-        id="end-the-game"
-        src="#swirl"
-        scale="0.5 0.5 0.5"
-        position="-78 8 0.2"
-        rotation="90 90 0"
-        visible="false"
-        animation__spin="property: rotation; dur: 50000; loop: true; to: 90  1490 0;"
-      >
-      </a-gltf-model>
     </a-scene>
   </body>
 </html>
