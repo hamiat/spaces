@@ -67,7 +67,6 @@
         <a-asset-item id="gorilla" src="assets/gorilla.glb"> </a-asset-item>
         <a-asset-item id="butterfly" src="assets/butterfly.glb"> </a-asset-item>
         <a-asset-item id="bison" src="assets/bison.glb"> </a-asset-item>
-        
       </a-assets>
       <!-- Camera and lights -->
       <a-entity
@@ -79,8 +78,13 @@
           position="0 2.6 52"
           look-controls="pointerLockEnabled: true"
         >
-        <a-sound src="url(assets/space-sound2.mp3)" autoplay="true"
-        position="0 0 0" loop="true" volume="0.5"></a-sound>
+          <a-sound
+            src="url(assets/space-sound2.mp3)"
+            autoplay="true"
+            position="0 0 0"
+            loop="true"
+            volume="0.5"
+          ></a-sound>
 
           <a-entity
             velocity="0 -1.0297350002801977 0"
@@ -117,8 +121,8 @@
       <!-- level 1 Ground-->
 
       <a-plane
-      src="#sand"
-      opacity="0.4"
+        src="#sand"
+        opacity="0.4"
         rotation="-90 0 0"
         color="#303030"
         scale="25 25 25"
@@ -130,8 +134,8 @@
       <!----------------------------------------Level 2 ------------------------------------------------>
       <!-- Ground -->
       <a-plane
-      src="#sand"
-      opacity="0.4"
+        src="#sand"
+        opacity="0.4"
         rotation="-90 0 0"
         color="#313131"
         scale="25 25 25"
@@ -154,8 +158,8 @@
       <!---------------------------------------- Level 3 ------------------------------------------->
       <!-- Ground level three -->
       <a-plane
-      src="#sand"
-      opacity="0.4"
+        src="#sand"
+        opacity="0.4"
         rotation="-90 0 0"
         color="#313131"
         scale="25 25 25"
@@ -425,9 +429,8 @@
         scale="1 1 1"
         position="-90 10 0.2"
         rotation="0 0 0"
-        visible="true"
+        visible="false"
         animation__spin="property: rotation; dur: 50000; loop: true; to: 0 1490 0;"
-     
       >
       </a-gltf-model>
     </a-scene>
