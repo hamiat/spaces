@@ -7,6 +7,18 @@
     <title>Dreaming of Space</title>
     <link rel="stylesheet" href="styles.css">
 
+    <script>
+      function hide() {
+                let x = document.getElementById('hide-div')
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+
+    </script>
+
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
     <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
@@ -14,24 +26,25 @@
     <script src="https://unpkg.com/aframe-proxy-event-component/dist/aframe-proxy-event-component.min.js"></script>
     <script defer src="toleveltwo.js"></script>
     
+    
   </head>
 
   <body>
     <div class="instruction-container" id="hide-div">
-      <h1>Spaces dreams</h1>
+      <h1>space dreams</h1>
      
-      <p>You're still dreaming<br><br><em><b>Click</b></em> to unveil items and paths to the secret portals.
+      <p> Follow the stars, they'll guide out of this dream.
       </p>
       <button id="start" onclick="hide()">START</button>
 
-  </div>
+        </div>
 
 
     <a-scene toleveltwo inspector-plugin-recast>
       <!--Assets-->
       <a-assets>
-        <img id="small-sky" src="assets/small-sky.jpg" />
-        <img id="text" src="assets/text.png" />
+        <img id="small-sky" src="assets/small-sky.jpg"/>
+        <img id="text" src="assets/text.png"/>
         <a-asset-item id="star" src="assets/star.glb"> </a-asset-item>
         <a-asset
           id="level-one-nav"

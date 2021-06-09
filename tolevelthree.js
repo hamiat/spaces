@@ -7,7 +7,7 @@ function init() {
 
   function nextGame() {
     
-    location.href = "https://sumanasattar.github.io/A-frame-project";
+    location.href = "level-three.html";
   }
 
   

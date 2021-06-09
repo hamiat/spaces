@@ -8,7 +8,7 @@ function init() {
     endSwirl.addEventListener("click", endGame);
 
     function endGame() {
-        location.href = "index.html";
+        location.href = "https://sumanasattar.github.io/A-frame-project";
     }
   }
 

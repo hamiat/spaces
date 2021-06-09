@@ -30,6 +30,7 @@
         <a-asset-item id="star" src="assets/star.glb"> </a-asset-item>
         <a-asset-item id="swirl" src="assets/swirl.glb"> </a-asset-item>
         <a-asset-item id="door" src="assets/door.glb"> </a-asset-item>
+        <img id="text3" src="assets/text-lev-three.png"/>
 
         <a-asset-item
         id="nav"
@@ -173,10 +174,26 @@
         scale="0.25 0.25 0.25"
         position="-51 0.5 -9"
         color="#ffd66e"
+        animation="property: position; dur: 2000; loop: true; dir:alternate; to: -51.2 0.7 -9.1;"
         event-set__shownpathsix="_event: click; _target: #path-six-box; visible: true;"
         event-set__shownextanimalok_="_event: click; _target: #path-seven-block; visible: true"
         event-set__shownextanimalnotok_="_event: click; _target: #not-path-block-one; visible: true"
+        event-set__showtext="_event: click; _target: #level-three-instructions; visible: true;"
       ></a-gltf-model>
+
+      <a-plane
+      id="level-three-instructions"
+      position="-51 5 -9"
+      rotation="0 0 0"
+      visible="false"
+      src="#text3"
+      transparent="true"
+      scale="1.5 1.5 1.5"
+      color="#313131"
+      event-set__enter="_event: mouseenter; transparent:false; scale: 2 2 2;"
+    event-set__leave="_event: mouseleave; transparent:true"
+    ></a-plane>
+ 
 
       <a-gltf-model
         id="path-seven-block"
@@ -229,11 +246,11 @@
       <a-gltf-model
         src="#star"
         id="path-twelve-block"
-        position="-53 8 4"
+        position="-53 12 38"
         scale="0.01 0.01 0.01"
-        rotation="90 180 45"
+        rotation="90 90 0"
         visible="true"
-        animation__spin="property: rotation; dur: 10000; loop: true; to: 0  1490 0;"
+        animation__spin="property: position; dur: 5000; dir: alternate; loop: true; to: -53 8 18;"
         event-set__shownpathseven="_event: click; _target: #path-twelve-box; visible: true;"
         event-set__shownextanimalok_="_event: click; _target: #end-the-game; visible: true"
       ></a-gltf-model>
@@ -297,7 +314,7 @@
         scale="0.3 0.3 0.3"
         rotation="0 46 0"
         visible="false"
-        animation="property: position; dur: 1500; loop: true; dir:alternate; to: -46.5 1.7 -0.4;"
+        animation="property: position; dur: 1500; loop: true; dir:alternate; to: -46 1.6 4;"
         event-set__shownonpath="_event: click; _target: #path-eight-block; visible: false;"
         event-set___hideanimal="_event: click; _target: #path-seven-nine; visible: false;"
       ></a-gltf-model>
@@ -412,7 +429,7 @@
         scale="0.5 0.5 0.5"
         position="-90 8 0.2"
         rotation="90 90 0"
-        visible="true"
+        visible="false"
         opacity="0.5"
         animation="property: position; dur: 1500; loop: true; dir:alternate; to: -105.5 6 1.2;"
        
