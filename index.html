@@ -31,10 +31,10 @@
 
   <body>
     <div class="instruction-container" id="hide-div">
-      <h1>space dreams</h1>
+         
      
-      <p> Follow the stars, they'll guide out of this dream.
-      </p>
+      <h1> Follow the stars, they'll guide you out of this dream.
+      </h1><br>
       <button id="start" onclick="hide()">START</button>
 
         </div>
@@ -79,6 +79,10 @@
           position="0 1.6 0"
           look-controls="pointerLockEnabled: true"
           >
+        <!--
+          <a-sound id="bleep" src="url(assets/level-one-sound.wav)" autoplay="true"
+          position="0 0 0" loop="true" volume="0.2"></a-sound>-->
+          
           <a-entity
             velocity="0 -1.0297350002801977 0"
             cursor
@@ -119,6 +123,7 @@
           event-set__leave="_event: mouseleave; material.opacity: 0.5"
           event-set__firstpanelvisible="_event: click; _target: #first-panel; visible: true;"
           event-set__instructionsvisible="_event: click; _target: #level-one-instructions; visible: true;"
+          
         ></a-box>
 
         <!-- Text with instructions, visible when click on box-->
