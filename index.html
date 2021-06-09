@@ -39,7 +39,7 @@
       <!--Assets-->
       <a-assets>
         <img id="small-sky" src="assets/small-sky.jpg" />
-        <img id="text" src="assets/text.png" />
+        <img id="text" src="assets/text2.png" />
         <a-asset-item id="star" src="assets/star.glb"> </a-asset-item>
         <a-asset
           id="level-one-nav"
@@ -74,7 +74,7 @@
           position="0 1.6 0"
           look-controls="pointerLockEnabled: true"
         >
-        <a-sound src="url(assets/space-sound.mp3)" autoplay="true"
+        <a-sound src="url(assets/space-sound2.mp3)" autoplay="true"
         position="0 0 0" loop="true" volume="0.5"></a-sound>
 
           <a-entity
@@ -103,6 +103,7 @@
         position="0 8 0"
         rotation="-90 0 0"
         scale="6 6 6"
+      
       ></a-plane>
 
       <!-- 1) Click on box to display text-->
@@ -222,8 +223,9 @@
 
         <a-entity
           id="to-level-two"
-          gltf-model="#swirl"
-          scale="0.3 0.3 0.3"
+          gltf-model="#star"
+          scale="0.003 0.003 0.003"
+          rotation="0 0 90"
           position="0 7 0"
           visible="false"
           animation__spin="property: rotation; dur: 50000; loop: true; to: 0 1490 0;"
