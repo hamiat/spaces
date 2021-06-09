@@ -566,6 +566,8 @@
         visible="false"
         
         event-set__shownpathseven="_event: click; _target: #path-twelve-box; visible: true;"
+        event-set__shownextanimalok_="_event: click; _target: #end-the-game; visible: true"
+        
       ></a-gltf-model>
 
       <!-- Objects for Level 3 Distraction Path -->
@@ -587,6 +589,7 @@
         position="-51 0 -1.8"
         visible="false"
         event-set__shownonpath="_event: click; _target: #not-path-seven; visible: true;"
+        event-set___hideanimal="_event: click; _target: #not-path-block-one; visible: false"
       ></a-gltf-model>
 
       <a-gltf-model
@@ -606,6 +609,7 @@
         scale="1 1 1"
         visible="false"
         event-set__shownonpath="_event: click; _target: #not-path-nine; visible: true;"
+        event-set___hideanimal="_event: click; _target: #path-ten-box; visible: false"
       ></a-gltf-model>
      
 
@@ -631,6 +635,7 @@
         visible="false"
         animation="property: position; dur: 1500; loop: true; dir:alternate; to: -46.5 1.7 -0.4;"
         event-set__shownonpath="_event: click; _target: #path-eight-block; visible: false;"
+        event-set___hideanimal="_event: click; _target: #path-seven-nine; visible: false"
       ></a-gltf-model>
 
       <a-gltf-model
@@ -640,6 +645,7 @@
         scale="0.1 0.1 0.1"
         visible="false"
         event-set__shownonpath="_event: click; _target: #path-ten-block; visible: false;"
+        event-set___hideanimal="_event: click; _target: #path-seven-box; visible: false"
       ></a-gltf-model>
 
       <!-- Level 3 paths -->
@@ -752,7 +758,7 @@
           scale="0.5 0.5 0.5"
           position="-78 8 0.2"
           rotation="90 90 0"
-          visible="true"
+          visible="false"
           animation__spin="property: rotation; dur: 50000; loop: true; to: 90  1490 0;"
        >
       </a-gltf-model>
