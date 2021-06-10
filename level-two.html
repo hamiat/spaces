@@ -11,7 +11,7 @@
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
     <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
     <script src="https://unpkg.com/aframe-proxy-event-component/dist/aframe-proxy-event-component.min.js"></script>
   </head>
 
@@ -23,11 +23,14 @@
         <img id="galaxy" src="assets/sky.jpg" />
         <img id="sand" src="assets/sand.png" />
         <img id="text2" src="assets/text-lev-two.png" />
+        <img id="a-goat-text" src="assets/agoattext.png" />
         <a-asset-item id="star" src="assets/star.glb"> </a-asset-item>
         <a-asset-item id="swirl" src="assets/swirl.glb"> </a-asset-item>
         <a-asset-item id="door" src="assets/door.glb"> </a-asset-item>
 
         <a-asset-item id="nav" src="assets/navmesh.gltf"></a-asset-item>
+        <a-asset-item id="goat" src="assets/goat.glb"></a-asset-item>
+
 
         <!--Level 2 path animals-->
         <a-asset-item id="badger" src="assets/badger.glb"> </a-asset-item>
@@ -77,8 +80,13 @@
           position="0 2.6 0"
           look-controls="pointerLockEnabled: true"
         >
-        <a-sound src="url(assets/space-sound2.mp3)" autoplay="true"
-        position="0 0 0" loop="true" volume="0.5"></a-sound>
+          <a-sound
+            src="url(assets/space-sound2.mp3)"
+            autoplay="true"
+            position="0 0 0"
+            loop="true"
+            volume="0.5"
+          ></a-sound>
 
           <a-entity
             velocity="0 -1.0297350002801977 0"
@@ -93,8 +101,8 @@
         <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
         <a-entity
           light="type: directional;
-                         castShadow: true;
-                         intensity: 0.4;
+                 castShadow: true;
+                 intensity: 0.4;
                       "
           position="-5 3 1.5"
         ></a-entity>
@@ -102,8 +110,6 @@
 
       <!-- Sky -->
       <a-sky src="#galaxy" rotation="0 0 0" radius="100"></a-sky>
-
-      <!----------  Level 1 (epilogue) --------------->
 
       <a-gltf-model
         id="ground-nav-mesh"
@@ -115,7 +121,6 @@
       <!-- level 1 Ground-->
 
       <a-plane
-       
         rotation="-90 0 0"
         color="#303030"
         scale="25 25 25"
@@ -123,9 +128,31 @@
         material="shader: flat;"
         src="#sand"
         opacity="0.4"
-       
       >
       </a-plane>
+      <a-gltf-model
+      id="path-five-block"
+      src="#goat"
+      scale="0.5 0.5 0.5"
+      position="50 0 3"
+     rotation="0 -90 0"
+     
+     event-set__showtext="_event: click; _target: #goat-text; visible: true;"
+     ></a-gltf-model>
+
+     <a-plane
+     id="goat-text"
+       position="50 5 3"
+       rotation="0 -90 0"
+       visible="false"
+       src="#a-goat-text"
+       transparent="false"
+       scale="1.5 1.5 1.5"
+       color="#313131"
+       event-set__enter="_event: mouseenter; transparent:false; scale: 2 2 2"
+       event-set__leave="_event: mouseleave; transparent:true"
+     ></a-plane>
+
       <!-- Small house -->
       <a-entity position="-5.4 0.2 8">
         <a-plane
@@ -207,7 +234,6 @@
       <!----------------------------------------Level 2 ------------------------------------------------>
       <!-- Ground -->
       <a-plane
-       
         rotation="-90 0 0"
         color="#313131"
         scale="25 25 25"
@@ -215,22 +241,36 @@
         material="shader: flat;"
         src="#sand"
         opacity="0.4"
-      
       >
       </a-plane>
 
       <!-- Objects that reveal path-->
       <a-gltf-model
         id="path-one-block"
-        src="#badger"
-        rotation="0 137 0"
-        scale="0.12 0.12 0.12"
-        position="-10.2 0 -5.4"
-        color="#ffd66e"
-        event-set__enter="_event: mouseenter; scale: 0.14 0.14 0.14"
-        event-set__leave="_event: mouseleave; scale: 0.12 0.12 0.12"
+        src="#cat"
+        scale="0.005 0.005 0.005"
+        position="3 0 -10.5"
+        rotation="0 90 0"
+        color="#fdf4dc"
+        animation="property: position; dur: 2000; loop: true; dir:alternate; to: 3 0.3 -10.5;"
+        event-set__enter="_event: mouseenter; scale: 0.006 0.006 0.006"
+        event-set__leave="_event: mouseleave; scale: 0.005 0.005 0.005"
         event-set__showpathone="_event: click; _target: #path-one-box; visible:true;"
+        event-set__showtext="_event: click; _target: #level-two-instructions; visible: true;"
       ></a-gltf-model>
+
+      <a-plane
+        id="level-two-instructions"
+        position="3 5 -10.5"
+       rotation="0 -15 0"
+        visible="false"
+        src="#text2"
+        transparent="false"
+        scale="1.5 1.5 1.5"
+        color="#313131"
+        event-set__enter="_event: mouseenter; transparent:false; scale: 2 2 2"
+        event-set__leave="_event: mouseleave; transparent:true"
+      ></a-plane>
 
       <a-gltf-model
         id="path-two-block"
@@ -264,31 +304,20 @@
         event-set__leave="_event: mouseleave; scale: 0.003 0.003 0.003"
         event-set__showpathfour="_event: click; _target: #path-four-box; visible: true;"
       ></a-gltf-model>
-      <a-gltf-model
-        id="path-five-block"
-        src="#cat"
-        scale="0.005 0.005 0.005"
-        position="10 0 0"
-        color="#fdf4dc"
-        animation="property: position; dur: 2000; loop: true; dir:alternate; to: 10 0.3 0;"
-        event-set__enter="_event: mouseenter; scale: 0.006 0.006 0.006"
-        event-set__leave="_event: mouseleave; scale: 0.005 0.005 0.005"
-        event-set__showpathfive="_event: click; _target: #path-five-box; visible: true;"
-        event-set__showtext="_event: click; _target: #level-two-instructions; visible: true;"
-      ></a-gltf-model>
 
-      <a-plane
-        id="level-two-instructions"
-        position="10 5 0"
-        rotation="0 -90 0"
-        visible="false"
-        src="#text2"
-        transparent="true"
-        scale="1.5 1.5 1.5"
-        color="#313131"
-        event-set__enter="_event: mouseenter; transparent:false; scale: 2 2 2"
-        event-set__leave="_event: mouseleave; transparent:true"
-      ></a-plane>
+      <a-gltf-model
+      id="path-five-block"
+      src="#badger"
+      rotation="0 137 0"
+      scale="0.12 0.12 0.12"
+      position="-10.2 0 -5.4"
+      color="#ffd66e"
+      event-set__enter="_event: mouseenter; scale: 0.14 0.14 0.14"
+      event-set__leave="_event: mouseleave; scale: 0.12 0.12 0.12"
+      event-set__showpathfive="_event: click; _target: #path-five-box; visible: true;"
+    ></a-gltf-model>
+
+     
 
       <!-- Objects that removes paths -->
       <a-gltf-model
@@ -497,7 +526,6 @@
       <!---------------------------------------- Level 3 ------------------------------------------->
       <!-- Ground level three -->
       <a-plane
-
         rotation="-90 0 0"
         color="#313131"
         scale="25 25 25"
