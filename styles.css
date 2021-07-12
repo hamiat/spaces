@@ -1,64 +1,60 @@
-.instruction-container{
-    background-image: url("assets/sky3.jpg");
-    background-size: cover;
-    position: fixed;
-   margin: auto;
-    transform: translate(calc(50vw - 50%), calc(50vh - 50%));
-    z-index: 999;
-    
-   font-family: monospace;
-    padding: 1rem 2rem 5rem 2rem;
-    width: 70%;
-    display: block;
-    color: #ffffff;
-    box-shadow: 5px 5px rgb(112, 112, 126);
-    border:none;
-    border-radius: 20px;
-    
-    }
+.instruction-container {
+  background-image: url("assets/sky3.jpg");
+  background-size: cover;
+  position: fixed;
+  margin: auto;
+  transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+  z-index: 999;
 
-    #start {
-        padding: 15px 25px;
-    color: black;
-        text-align: center;
-        cursor: pointer;
-        outline: none;
-        font-weight: bold;
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0 5px rgb(112, 112, 126);
-      background-color: rgb(247, 246, 255);
-      }
-      
-    #start:hover {
-        opacity: 0.8;
-    ;}
+  font-family: monospace;
+  padding: 1rem 2rem 5rem 2rem;
+  width: 70%;
+  display: block;
+  color: #ffffff;
+  box-shadow: 5px 5px rgb(112, 112, 126);
+  border: none;
+  border-radius: 20px;
+}
+
+#start {
+  padding: 15px 25px;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px rgb(112, 112, 126);
+  background-color: rgb(247, 246, 255);
+}
+
+#start:hover {
+  opacity: 0.8;
+}
 
 #start:active {
   opacity: 1;
-  
+
   margin-top: 2px;
   margin-left: 2px;
 }
-    
-h1 {
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.8em;
-      
-}
-    h2,p{
-    text-align: center;
-    font-weight: 400;
-    font-size: 1.6em;
-    
-    }
 
-    
-    
-    #start{
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%, 0);
-    padding: 12px 30px;
-    }
+h1 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.8em;
+}
+h2,
+p {
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.6em;
+}
+
+#start {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 12px 30px;
+}

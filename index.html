@@ -39,13 +39,12 @@
       <a-assets>
         <img id="small-sky" src="assets/small-sky.jpg" />
         <img id="text" src="assets/text2.png" />
-        <a-asset-item id="star" src="assets/star.glb"> </a-asset-item>
+        <a-asset-item id="star" src="https://cdn.glitch.com/b5bafe8f-6f1b-46fe-9526-f628b6eef46a%2Fstar.glb?v=1626085458499"> </a-asset-item>
         <a-asset
           id="level-one-nav"
           src="assets/first-level-mesh.gltf"
         ></a-asset>
-        <a-asset-item id="star" src="assets/star.glb"> </a-asset-item>
-        <a-asset-item id="swirl" src="assets/swirl.glb"> </a-asset-item>
+       
       </a-assets>
 
       <!-- Layout -->
@@ -64,10 +63,7 @@
       ></a-gltf-model>
 
       <!-- Camera and lights -->
-      <a-entity
-        movement-controls="speed: 0.15; constrainToNavMesh: true"
-       
-      >
+      <a-entity movement-controls="speed: 0.15; constrainToNavMesh: true">
         <a-entity
           camera
           position="0 1.6 0"
@@ -153,7 +149,7 @@
           gltf-model="#star"
           rotation="0 0 20"
           visible="false"
-          animation="property: position; dur: 1500; loop: true; dir:alternate; to: 2.5 5.6 0;"
+          
           event-set__showsecondpanel="_event: click; _target: #second-panel; visible: true;"
           event-set__hideself="_event: click; _target: #first-panel; visible: false"
         ></a-entity>
@@ -175,8 +171,7 @@
           position="-2 4 1"
           rotation="0 0 0"
           visible="false"
-          animation="property: position; dur: 1500; loop: true; dir:alternate; to: -2 4.5 1;"
-          event-set__showthirdpanel="_event: click; _target: #third-panel; visible: true;"
+                    event-set__showthirdpanel="_event: click; _target: #third-panel; visible: true;"
           event-set__hidesecondpanel="_event: click; _target: #first-panel; visible: false;"
           event-set__hideself="_event: click; _target: #second-panel; visible: false"
         ></a-entity>
@@ -196,7 +191,7 @@
           position="2 2 2.7"
           rotation="0 90 20"
           visible="false"
-          animation="property: position; dur: 1500; loop: true; dir:alternate; to: 2 2.3 2.7;"
+          
           event-set__showfourthpanel="_event: click; _target: #fourth-panel; visible: true;"
           event-set__hidesecondpanel="_event: click; _target: #second-panel; visible: false;"
           event-set__hideself="_event: click; _target: #third-panel; visible: false"
@@ -218,7 +213,7 @@
           position="0 4 -2.5"
           rotation="0 90 20"
           visible="false"
-          animation="property: position; dur: 1500; loop: true; dir:alternate; to: 0 4.1 -2.5;"
+          
           event-set__hidethirdpanel="_event: click; _target: #third-panel; visible: false;"
           event-set__showroof="_event: click; _target: #to-level-two; visible: true;"
           event-set__hideself="_event: click; _target: #fourth-panel; visible: false"
@@ -231,7 +226,7 @@
           rotation="0 0 90"
           position="0 7 0"
           visible="false"
-          animation__spin="property: rotation; dur: 50000; loop: true; to: 0 1490 0;"
+          
           event-set__hidethirdpanel="_event: click; _target: #fourth-panel; visible: false;"
         ></a-entity>
       </a-entity>
