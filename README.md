@@ -1,5 +1,5 @@
 
-A space themed gaming experience created with A-frame as part of the "Escape from Hyper Island" project by FED22.<br/>
+A space themed 3D gaming experience created with A-frame as part of the "Escape from Hyper Island" project by FED22.<br/>
 Created for desktop.<br/>
 https://hamiat.github.io/spaces/
 
