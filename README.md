@@ -1,11 +1,11 @@
-
-A space themed 3D gaming experience created with A-frame as part of the "Escape from Hyper Island" project by FED22.<br/>
-(created for desktop)<br/>
+# Spaces
+A space themed 3D/VR gaming experience created with A-frame as part of the "Escape from Hyper Island" project by FED22.
+(created for desktop)
 https://hamiat.github.io/spaces/
 
-Creative Commons Attributions:<br/>
-The Milky Way panorama by ESO/S. Brunier<br/>
-Galaxy image - Andy-holmes, Unsplash<br/>
-Texturify<br/>
-Poly by Google<br/>
+#### Creative Commons Attributions:
+The Milky Way panorama by ESO/S. Brunier
+Galaxy image - Andy-holmes, Unsplash
+Texturify
+Poly by Google
 Gaming-music - puredesigngirl, Freesound.org
